@@ -18,7 +18,7 @@ import altair as alt
 from core.storage import Storage
 from core.metrics import MetricsEngine
 
-st.set_page_config(page_title="Dashboard", page_icon="📈", layout="wide")
+st.set_page_config(page_title="Dashboard", page_icon="📈", layout="wide", initial_sidebar_state="expanded")
 
 st.title("📈 Dashboard")
 st.markdown("Trends, metrics, and analytics")

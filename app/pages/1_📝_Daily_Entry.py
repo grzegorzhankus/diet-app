@@ -14,7 +14,7 @@ from datetime import date, timedelta
 from core.storage import Storage
 from core.schemas import DailyEntryCreate, DailyEntryUpdate
 
-st.set_page_config(page_title="Daily Entry", page_icon="📝", layout="wide")
+st.set_page_config(page_title="Daily Entry", page_icon="📝", layout="wide", initial_sidebar_state="expanded")
 
 st.title("📝 Daily Entry")
 st.markdown("Record your daily measurements")

@@ -16,7 +16,7 @@ from datetime import date, timedelta
 from core.storage import Storage
 from core.red_flags import RedFlagsEngine
 
-st.set_page_config(page_title="Red Flags", page_icon="🚩", layout="wide")
+st.set_page_config(page_title="Red Flags", page_icon="🚩", layout="wide", initial_sidebar_state="expanded")
 
 st.title("🚩 Red Flags")
 st.markdown("Anomaly detection and potential issues in your tracking data")

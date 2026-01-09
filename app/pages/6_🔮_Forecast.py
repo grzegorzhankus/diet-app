@@ -19,7 +19,7 @@ from core.storage import Storage
 from core.forecast import ForecastEngine
 from core.metrics import MetricsEngine
 
-st.set_page_config(page_title="Forecast", page_icon="🔮", layout="wide")
+st.set_page_config(page_title="Forecast", page_icon="🔮", layout="wide", initial_sidebar_state="expanded")
 
 st.title("🔮 Weight Forecast")
 st.markdown("Predictive analytics for your weight loss journey based on current trends")

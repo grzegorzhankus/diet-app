@@ -14,7 +14,7 @@ import streamlit as st
 from core.storage import Storage
 from core.kpi_engine import KPIEngine
 
-st.set_page_config(page_title="KPIs", page_icon="📊", layout="wide")
+st.set_page_config(page_title="KPIs", page_icon="📊", layout="wide", initial_sidebar_state="expanded")
 
 st.title("📊 Key Performance Indicators")
 st.markdown("Track your progress with 12 data-driven KPIs")

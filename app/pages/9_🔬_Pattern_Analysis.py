@@ -21,7 +21,7 @@ from core.ml.holidays import PolishHolidayCalendar
 from core.ml.visualizations import PatternVisualizationEngine
 
 # Page config
-st.set_page_config(page_title="Pattern Analysis", page_icon="🔬", layout="wide")
+st.set_page_config(page_title="Pattern Analysis", page_icon="🔬", layout="wide", initial_sidebar_state="expanded")
 
 st.title("🔬 Pattern Analysis")
 st.caption("ML-powered detection of behavioral patterns in your diet and training")

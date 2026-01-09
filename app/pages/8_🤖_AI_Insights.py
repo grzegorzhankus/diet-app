@@ -21,7 +21,7 @@ from core.llm.qa_engine import QAEngine
 from core.llm.benchmark import LLMBenchmark
 
 # Page config
-st.set_page_config(page_title="AI Insights", page_icon="🤖", layout="wide")
+st.set_page_config(page_title="AI Insights", page_icon="🤖", layout="wide", initial_sidebar_state="expanded")
 
 st.title("🤖 AI Insights")
 st.caption("Local LLM-powered analysis and Q&A (requires Ollama)")

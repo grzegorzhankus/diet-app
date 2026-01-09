@@ -18,7 +18,7 @@ from core.storage import Storage
 from core.export import ExportEngine
 from core.pdf_export import PDFExportEngine
 
-st.set_page_config(page_title="Export", page_icon="📤", layout="wide")
+st.set_page_config(page_title="Export", page_icon="📤", layout="wide", initial_sidebar_state="expanded")
 
 st.title("📤 Export Data")
 st.markdown("Download comprehensive reports in Excel or CSV format")
