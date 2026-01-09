@@ -70,44 +70,44 @@ with st.form(form_key):
         )
 
         weight_kg = st.number_input(
-            "Weight (kg)",
+            t("weight_kg", lang),
             min_value=30.0,
             max_value=200.0,
             value=default_weight,
             step=0.1,
-            help="Body weight in kilograms (30-200 kg)"
+            help=t("weight_kg", lang) + " (30-200 kg)"
         )
 
         bodyfat_pct = st.number_input(
-            "Body Fat %",
+            t("bodyfat_pct", lang),
             min_value=0.0,
             max_value=100.0,
             value=default_bodyfat,
             step=0.1,
-            help="Body fat percentage (optional, 0-100%)"
+            help=t("bodyfat_pct", lang) + " (0-100%)"
         )
 
     with col2:
         cal_in_kcal = st.number_input(
-            "Calories IN (kcal)",
+            t("cal_in", lang),
             min_value=0.0,
             value=default_cal_in,
             step=10.0,
-            help="Total calories consumed (optional)"
+            help=t("cal_in", lang)
         )
 
         cal_out_sport_kcal = st.number_input(
-            "Exercise OUT (kcal)",
+            t("cal_out", lang),
             min_value=0.0,
             value=default_cal_out,
             step=10.0,
-            help="Calories burned through exercise (optional)"
+            help=t("cal_out", lang)
         )
 
         notes = st.text_area(
-            "Notes",
+            t("notes", lang),
             value=default_notes,
-            placeholder="Optional notes (e.g., 'Morning, fasted')",
+            placeholder=t("notes", lang),
             max_chars=500
         )
 
@@ -118,7 +118,7 @@ with st.form(form_key):
 
     with col_cancel:
         if st.session_state.edit_mode:
-            cancel = st.form_submit_button("Cancel", use_container_width=True)
+            cancel = st.form_submit_button(t("cancel", lang), use_container_width=True)
             if cancel:
                 st.session_state.edit_mode = False
                 st.session_state.edit_entry = None
@@ -137,7 +137,7 @@ with st.form(form_key):
                 )
 
                 updated = storage.update(st.session_state.edit_entry.id, updates)
-                st.success(f"✅ Entry updated for {updated.date}")
+                st.success(f"✅ {t('entry_updated_for', lang)} {updated.date}")
 
                 # Exit edit mode
                 st.session_state.edit_mode = False
@@ -148,8 +148,8 @@ with st.form(form_key):
                 existing = storage.get_by_date(entry_date)
 
                 if existing:
-                    st.warning(f"⚠️ Entry for {entry_date} already exists.")
-                    if st.button("🔄 Override this entry"):
+                    st.warning(f"⚠️ {t('entry_exists_warning', lang).format(date=entry_date)}")
+                    if st.button(f"🔄 {t('override_entry', lang)}"):
                         # Switch to edit mode with this entry
                         st.session_state.edit_mode = True
                         st.session_state.edit_entry = existing
@@ -167,16 +167,16 @@ with st.form(form_key):
                     )
 
                     saved = storage.create(entry)
-                    st.success(f"✅ Entry saved for {saved.date}")
+                    st.success(f"✅ {t('entry_saved_for', lang)} {saved.date}")
                     st.balloons()
 
         except Exception as e:
-            st.error(f"❌ Error saving entry: {str(e)}")
+            st.error(f"❌ {t('error_saving', lang)}: {str(e)}")
 
 st.divider()
 
 # Recent entries with edit buttons
-st.subheader("Recent Entries (Last 7 Days)")
+st.subheader(t("recent_entries_7", lang))
 
 recent = storage.get_all(limit=7)
 
@@ -186,45 +186,45 @@ if recent:
             col1, col2, col3 = st.columns(3)
 
             with col1:
-                st.metric("Weight", f"{entry.weight_kg} kg")
+                st.metric(t("weight_kg", lang), f"{entry.weight_kg} kg")
                 if entry.bodyfat_pct:
-                    st.metric("Body Fat %", f"{entry.bodyfat_pct:.1f}%")
+                    st.metric(t("bodyfat_pct", lang), f"{entry.bodyfat_pct:.1f}%")
 
             with col2:
                 if entry.cal_in_kcal:
-                    st.metric("Calories IN", f"{entry.cal_in_kcal:.0f} kcal")
+                    st.metric(t("cal_in", lang), f"{entry.cal_in_kcal:.0f} kcal")
                 if entry.cal_out_sport_kcal:
-                    st.metric("Exercise OUT", f"{entry.cal_out_sport_kcal:.0f} kcal")
+                    st.metric(t("cal_out", lang), f"{entry.cal_out_sport_kcal:.0f} kcal")
 
             with col3:
                 if entry.cal_in_kcal and entry.cal_out_sport_kcal:
                     net = entry.cal_in_kcal - entry.cal_out_sport_kcal
-                    st.metric("NET Balance", f"{net:.0f} kcal")
+                    st.metric(t("net_balance", lang), f"{net:.0f} kcal")
 
             if entry.notes:
                 st.caption(f"📝 {entry.notes}")
 
-            st.caption(f"Source: {entry.source}")
+            st.caption(f"{t('source', lang)}: {entry.source}")
 
             # Edit and Delete buttons
             col_edit, col_delete, col_spacer = st.columns([1, 1, 3])
 
             with col_edit:
-                if st.button(f"✏️ Edit", key=f"edit_{entry.id}"):
+                if st.button(f"✏️ {t('edit', lang)}", key=f"edit_{entry.id}"):
                     st.session_state.edit_mode = True
                     st.session_state.edit_entry = entry
                     st.rerun()
 
             with col_delete:
-                if st.button(f"🗑️ Delete", key=f"delete_{entry.id}"):
+                if st.button(f"🗑️ {t('delete', lang)}", key=f"delete_{entry.id}"):
                     if storage.delete(entry.id):
-                        st.success(f"Deleted entry for {entry.date}")
+                        st.success(f"{t('delete', lang)} {entry.date}")
                         st.rerun()
                     else:
-                        st.error("Failed to delete entry")
+                        st.error(f"{t('error_saving', lang)}")
 else:
-    st.info("No entries yet. Add your first measurement above!")
+    st.info(t("no_entries_yet", lang))
 
 # Footer
 st.divider()
-st.caption(f"Total entries in database: {storage.count()}")
+st.caption(f"{t('total_entries_db', lang)}: {storage.count()}")
