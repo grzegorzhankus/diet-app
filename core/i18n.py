@@ -158,12 +158,100 @@ TRANSLATIONS: Dict[str, Dict[str, str]] = {
     "source": {"en": "Source", "pl": "Źródło"},
 
 
+    # History page
+    "data_history": {"en": "Data History", "pl": "Historia danych"},
+    "total_entries": {"en": "Total Entries", "pl": "Łączna liczba wpisów"},
+    "date_range": {"en": "Date Range", "pl": "Zakres dat"},
+    "recent_entries": {"en": "Recent Entries", "pl": "Ostatnie wpisy"},
+    "no_data_yet": {"en": "No data available yet. Add your first entry!",
+                    "pl": "Brak danych. Dodaj swój pierwszy wpis!"},
+    "view_all_data": {"en": "View All Data", "pl": "Zobacz wszystkie dane"},
+    "latest_entry": {"en": "Latest Entry", "pl": "Ostatni wpis"},
+    "oldest_entry": {"en": "Oldest Entry", "pl": "Najstarszy wpis"},
+
+    # Dashboard page
+    "analytics_dashboard": {"en": "Analytics Dashboard", "pl": "Dashboard analityczny"},
+    "weight_trend": {"en": "Weight Trend", "pl": "Trend wagi"},
+    "calories_trend": {"en": "Calories Trend", "pl": "Trend kalorii"},
+    "training_trend": {"en": "Training Trend", "pl": "Trend treningowy"},
+    "correlation_analysis": {"en": "Correlation Analysis", "pl": "Analiza korelacji"},
+    "select_time_period": {"en": "Select Time Period", "pl": "Wybierz okres"},
+    "trend_analysis": {"en": "Trend Analysis", "pl": "Analiza trendów"},
+
+    # KPIs page
+    "key_performance_indicators": {"en": "Key Performance Indicators", "pl": "Kluczowe wskaźniki wydajności"},
+    "current_weight": {"en": "Current Weight", "pl": "Aktualna waga"},
+    "avg_daily_calories": {"en": "Avg Daily Calories", "pl": "Średnie dzienne kalorie"},
+    "total_training_time": {"en": "Total Training Time", "pl": "Całkowity czas treningu"},
+    "weight_change": {"en": "Weight Change", "pl": "Zmiana wagi"},
+    "avg_weight": {"en": "Average Weight", "pl": "Średnia waga"},
+    "min_weight": {"en": "Minimum Weight", "pl": "Minimalna waga"},
+    "max_weight": {"en": "Maximum Weight", "pl": "Maksymalna waga"},
+    "consistency_score": {"en": "Consistency Score", "pl": "Wskaźnik konsystencji"},
+
+    # Red Flags page
+    "risk_alerts": {"en": "Risk Alerts", "pl": "Alerty ryzyka"},
+    "no_red_flags": {"en": "✅ No red flags detected. Keep up the good work!",
+                     "pl": "✅ Nie wykryto red flags. Tak trzymaj!"},
+    "red_flags_detected": {"en": "red flags detected", "pl": "wykrytych red flags"},
+    "severity": {"en": "Severity", "pl": "Ważność"},
+    "high": {"en": "HIGH", "pl": "WYSOKA"},
+    "medium": {"en": "MEDIUM", "pl": "ŚREDNIA"},
+    "low": {"en": "LOW", "pl": "NISKA"},
+    "description": {"en": "Description", "pl": "Opis"},
+    "recommendation": {"en": "Recommendation", "pl": "Rekomendacja"},
+
+    # Forecast page
+    "weight_forecast": {"en": "Weight Forecast", "pl": "Prognoza wagi"},
+    "forecast_days": {"en": "Forecast Days", "pl": "Dni prognozy"},
+    "generate_forecast": {"en": "🔮 Generate Forecast", "pl": "🔮 Generuj prognozę"},
+    "predicted_weight": {"en": "Predicted Weight", "pl": "Przewidywana waga"},
+    "confidence_interval": {"en": "Confidence Interval", "pl": "Przedział ufności"},
+    "forecast_chart": {"en": "Forecast Chart", "pl": "Wykres prognozy"},
+
+    # Export page
+    "export_data_title": {"en": "Export Your Data", "pl": "Eksportuj swoje dane"},
+    "export_format": {"en": "Export Format", "pl": "Format eksportu"},
+    "export_csv": {"en": "📄 Export as CSV", "pl": "📄 Eksportuj jako CSV"},
+    "export_excel": {"en": "📊 Export as Excel", "pl": "📊 Eksportuj jako Excel"},
+    "export_pdf": {"en": "📕 Export as PDF Report", "pl": "📕 Eksportuj jako raport PDF"},
+    "select_date_range": {"en": "Select Date Range", "pl": "Wybierz zakres dat"},
+    "start_date": {"en": "Start Date", "pl": "Data początkowa"},
+    "end_date": {"en": "End Date", "pl": "Data końcowa"},
+    "include_charts": {"en": "Include Charts", "pl": "Dołącz wykresy"},
+
+    # AI Insights page
+    "ai_insights_title": {"en": "AI-Powered Insights", "pl": "Insighty oparte na AI"},
+    "generate_insights": {"en": "🤖 Generate Insights", "pl": "🤖 Generuj insighty"},
+    "analyzing": {"en": "Analyzing your data...", "pl": "Analizuję twoje dane..."},
+    "llm_model": {"en": "LLM Model", "pl": "Model LLM"},
+    "temperature": {"en": "Temperature", "pl": "Temperatura"},
+    "insights_generated": {"en": "Insights Generated", "pl": "Insighty wygenerowane"},
+
+    # Pattern Analysis page
+    "pattern_analysis_title": {"en": "Pattern Analysis", "pl": "Analiza wzorców"},
+    "weekly_patterns": {"en": "Weekly Patterns", "pl": "Wzorce tygodniowe"},
+    "monthly_patterns": {"en": "Monthly Patterns", "pl": "Wzorce miesięczne"},
+    "anomalies_detected": {"en": "Anomalies Detected", "pl": "Wykryte anomalie"},
+    "analyze_patterns": {"en": "🔬 Analyze Patterns", "pl": "🔬 Analizuj wzorce"},
+
+    # Common buttons and actions
+    "refresh": {"en": "🔄 Refresh", "pl": "🔄 Odśwież"},
+    "download": {"en": "⬇️ Download", "pl": "⬇️ Pobierz"},
+    "clear": {"en": "🗑️ Clear", "pl": "🗑️ Wyczyść"},
+    "back": {"en": "← Back", "pl": "← Wstecz"},
+    "loading": {"en": "Loading...", "pl": "Ładowanie..."},
+    "error": {"en": "Error", "pl": "Błąd"},
+    "success": {"en": "Success", "pl": "Sukces"},
+    "warning": {"en": "Warning", "pl": "Ostrzeżenie"},
+
     # Units
     "kg": {"en": "kg", "pl": "kg"},
     "kcal": {"en": "kcal", "pl": "kcal"},
     "minutes": {"en": "minutes", "pl": "minut"},
     "hours": {"en": "hours", "pl": "godzin"},
     "days": {"en": "days", "pl": "dni"},
+    "percent": {"en": "%", "pl": "%"},
 }
 
 
