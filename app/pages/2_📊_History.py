@@ -14,6 +14,8 @@ import streamlit as st
 import pandas as pd
 from datetime import date, timedelta
 from core.storage import Storage
+from core.i18n import t, get_text
+
 
 st.set_page_config(page_title="History", page_icon="📊", layout="wide", initial_sidebar_state="expanded")
 

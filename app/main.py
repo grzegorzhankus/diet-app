@@ -13,11 +13,12 @@ if str(project_root) not in sys.path:
 import streamlit as st
 
 # App metadata
-APP_VERSION = "0.10.0"
+APP_VERSION = "0.11.0"
 APP_TITLE = "DIET_APP"
 
 # Import core modules
 from core.storage import Storage
+from core.i18n import t, get_text
 
 def main():
     """Main entry point for the Streamlit application."""
@@ -30,25 +31,45 @@ def main():
         initial_sidebar_state="expanded"
     )
 
+    # Initialize session state for language
+    if "language" not in st.session_state:
+        st.session_state.language = "en"
+
+    # Language selector in sidebar
+    with st.sidebar:
+        st.markdown("---")
+        lang_options = {"🇬🇧 English": "en", "🇵🇱 Polski": "pl"}
+        selected_lang_display = [k for k, v in lang_options.items() if v == st.session_state.language][0]
+
+        selected_lang = st.selectbox(
+            t("language", st.session_state.language),
+            options=list(lang_options.keys()),
+            index=list(lang_options.values()).index(st.session_state.language),
+            key="lang_selector"
+        )
+        st.session_state.language = lang_options[selected_lang]
+
+    lang = st.session_state.language
+
     # Header
-    st.title(f"{APP_TITLE} v{APP_VERSION}")
-    st.markdown("**CFO-grade diet and training tracker** • Offline-first • Deterministic")
+    st.title(f"{t('app_title', lang)} v{APP_VERSION}")
+    st.markdown(t("app_subtitle", lang))
 
     st.divider()
 
     # Status section
-    st.subheader("System Status")
+    st.subheader(t("system_status", lang))
 
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.metric("Application", "Online", delta="OK")
+        st.metric(t("application", lang), t("online", lang), delta=t("ok", lang))
 
     with col2:
-        st.metric("Runtime Mode", "Offline", delta="No egress")
+        st.metric(t("runtime_mode", lang), t("offline", lang), delta=t("no_egress", lang))
 
     with col3:
-        st.metric("Version", APP_VERSION, delta="Blok 4")
+        st.metric(t("storage_location", lang), t("local", lang), delta="Blok 4")
 
     st.divider()
 

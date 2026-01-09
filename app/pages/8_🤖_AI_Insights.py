@@ -15,6 +15,8 @@ from datetime import date
 from pathlib import Path
 
 from core.storage import Storage
+from core.i18n import t, get_text
+
 from core.llm.client import OllamaClient
 from core.llm.narration import NarrationEngine
 from core.llm.qa_engine import QAEngine

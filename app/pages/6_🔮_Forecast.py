@@ -16,6 +16,8 @@ import pandas as pd
 import altair as alt
 
 from core.storage import Storage
+from core.i18n import t, get_text
+
 from core.forecast import ForecastEngine
 from core.metrics import MetricsEngine
 

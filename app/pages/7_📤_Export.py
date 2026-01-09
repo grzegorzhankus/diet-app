@@ -15,6 +15,8 @@ from datetime import date
 import io
 
 from core.storage import Storage
+from core.i18n import t, get_text
+
 from core.export import ExportEngine
 from core.pdf_export import PDFExportEngine
 

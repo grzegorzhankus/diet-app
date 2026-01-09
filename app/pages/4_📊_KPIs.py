@@ -12,6 +12,8 @@ if str(project_root) not in sys.path:
 
 import streamlit as st
 from core.storage import Storage
+from core.i18n import t, get_text
+
 from core.kpi_engine import KPIEngine
 
 st.set_page_config(page_title="KPIs", page_icon="📊", layout="wide", initial_sidebar_state="expanded")

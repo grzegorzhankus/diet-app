@@ -12,12 +12,19 @@ if str(project_root) not in sys.path:
 import streamlit as st
 from datetime import date, timedelta
 from core.storage import Storage
+from core.i18n import t, get_text
+
 from core.schemas import DailyEntryCreate, DailyEntryUpdate
 
 st.set_page_config(page_title="Daily Entry", page_icon="📝", layout="wide", initial_sidebar_state="expanded")
 
-st.title("📝 Daily Entry")
-st.markdown("Record your daily measurements")
+# Get language from session state
+if "language" not in st.session_state:
+    st.session_state.language = "en"
+lang = st.session_state.language
+
+st.title(f"📝 {t('daily_entry', lang)}")
+st.markdown(t("log_daily_data", lang))
 
 # Initialize storage
 storage = Storage()
@@ -30,7 +37,7 @@ if 'edit_entry' not in st.session_state:
 
 # Form for new/edit entry
 if st.session_state.edit_mode and st.session_state.edit_entry:
-    st.subheader(f"✏️ Edit Entry for {st.session_state.edit_entry.date}")
+    st.subheader(f"✏️ {t('edit_entry_for', lang)} {st.session_state.edit_entry.date}")
     entry = st.session_state.edit_entry
     default_date = entry.date
     default_weight = entry.weight_kg
@@ -39,9 +46,9 @@ if st.session_state.edit_mode and st.session_state.edit_entry:
     default_cal_out = entry.cal_out_sport_kcal if entry.cal_out_sport_kcal else None
     default_notes = entry.notes if entry.notes else ""
     form_key = f"edit_form_{entry.id}"
-    submit_label = "💾 Update Entry"
+    submit_label = f"💾 {t('update_entry', lang)}"
 else:
-    st.subheader("Add New Entry")
+    st.subheader(t("add_new_entry", lang))
     default_date = date.today()
     default_weight = 80.0
     default_bodyfat = None
@@ -49,14 +56,14 @@ else:
     default_cal_out = None
     default_notes = ""
     form_key = "daily_entry_form"
-    submit_label = "💾 Save Entry"
+    submit_label = f"💾 {t('save_entry', lang)}"
 
 with st.form(form_key):
     col1, col2 = st.columns(2)
 
     with col1:
         entry_date = st.date_input(
-            "Date",
+            t("date", lang),
             value=default_date,
             max_value=date.today(),
             disabled=st.session_state.edit_mode  # Can't change date in edit mode

@@ -16,6 +16,8 @@ from pathlib import Path
 import pandas as pd
 
 from core.storage import Storage
+from core.i18n import t, get_text
+
 from core.ml.patterns import PatternDetectionEngine
 from core.ml.holidays import PolishHolidayCalendar
 from core.ml.visualizations import PatternVisualizationEngine
